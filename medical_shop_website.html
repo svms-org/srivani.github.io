@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Vani Medical & Surgicals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin: 2rem 0;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Product Categories */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .category-card p {
+            color: #666;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Product Grid */
+        .products-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #666;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .product-sizes {
+            background: #f8f9fa;
+            padding: 0.5rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* Search and Filter */
+        .search-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .search-box {
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            min-width: 300px;
+        }
+
+        .search-box:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ecf0f1;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #bdc3c7;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ecf0f1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .search-box {
+                min-width: 100%;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Sri Vani Medical & Surgicals</div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        📞 98488 80259
+                    </div>
+                    <div class="contact-item">
+                        📞 93908 16143
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="#home" onclick="showSection('home')">Home</a></li>
+                <li><a href="#ortho" onclick="showSection('ortho')">Orthopedic</a></li>
+                <li><a href="#surgical" onclick="showSection('surgical')">Surgical</a></li>
+                <li><a href="#hospital" onclick="showSection('hospital')">Hospital Equipment</a></li>
+                <li><a href="#medical" onclick="showSection('medical')">Medical Devices</a></li>
+                <li><a href="#uniforms" onclick="showSection('uniforms')">Uniforms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="home" class="hero fade-in">
+            <h1>Complete Healthcare Solutions</h1>
+            <p>Your trusted partner for quality medical equipment, surgical instruments, hospital uniforms, and healthcare products. We provide comprehensive solutions for hospitals, clinics, and healthcare professionals.</p>
+        </section>
+
+        <section class="categories">
+            <div class="category-card fade-in" onclick="showSection('ortho')">
+                <h3>🦴 Orthopedic Products</h3>
+                <p>Comprehensive range of orthopedic supports, braces, and rehabilitation equipment for patient care and recovery.</p>
+            </div>
+            <div class="category-card fade-in" onclick="showSection('surgical')">
+                <h3>🔬 Surgical Instruments</h3>
+                <p>High-quality surgical tools and instruments for medical procedures and operations.</p>
+            </div>
+            <div class="category-card fade-in" onclick="showSection('hospital')">
+                <h3>🏥 Hospital Equipment</h3>
+                <p>Essential hospital furniture, beds, wheelchairs, and patient care equipment.</p>
+            </div>
+            <div class="category-card fade-in" onclick="showSection('medical')">
+                <h3>⚕️ Medical Devices</h3>
+                <p>Advanced medical monitoring devices, diagnostic equipment, and healthcare technology.</p>
+            </div>
+        </section>
+
+        <section id="products" class="products-section">
+            <h2 class="section-title">Our Products</h2>
+            
+            <div class="search-filter">
+                <input type="text" class="search-box" placeholder="Search products..." onkeyup="searchProducts()">
+                <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+                <button class="filter-btn" onclick="filterProducts('ortho')">Orthopedic</button>
+                <button class="filter-btn" onclick="filterProducts('surgical')">Surgical</button>
+                <button class="filter-btn" onclick="filterProducts('hospital')">Hospital</button>
+                <button class="filter-btn" onclick="filterProducts('medical')">Medical</button>
+            </div>
+
+            <div id="product-grid" class="products-grid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📞 Phone: 98488 80259</p>
+                    <p>📞 Phone: 93908 16143</p>
+                    <p>📧 Email: info@srivanimedical.com</p>
+                    <p>🏢 Sri Vani Medical & Surgicals</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Product Categories</h3>
+                    <ul>
+                        <li><a href="#ortho">Orthopedic Products</a></li>
+                        <li><a href="#surgical">Surgical Instruments</a></li>
+                        <li><a href="#hospital">Hospital Equipment</a></li>
+                        <li><a href="#medical">Medical Devices</a></li>
+                        <li><a href="#uniforms">Hospital Uniforms</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li>Medical Equipment Sales</li>
+                        <li>Equipment Rental</li>
+                        <li>Custom Orthopedic Solutions</li>
+                        <li>Hospital Uniform Supply</li>
+                        <li>Healthcare Consulting</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Sri Vani Medical & Surgicals is your trusted healthcare partner, providing quality medical equipment and services to healthcare professionals and institutions.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product data based on the brochure
+        const products = [
+            // Orthopedic Products
+            {
+                name: "Lumbo Sacral Belt",
+                category: "ortho",
+                description: "Provides lower back support and helps alleviate lumbar pain. Essential for patients with back injuries or chronic lower back pain.",
+                sizes: "S, M, L, XL, XXL, XXXL",
+                icon: "🦴"
+            },
+            {
+                name: "Knee Hinged Support",
+                category: "ortho",
+                description: "Advanced knee support with hinged mechanism for controlled movement during recovery from knee injuries or surgeries.",
+                sizes: "S, M, L, XL",
+                icon: "🦵"
+            },
+            {
+                name: "Cervical Collar",
+                category: "ortho",
+                description: "Neck support collar for cervical spine injuries and post-surgical recovery. Provides stability and pain relief.",
+                sizes: "S, M, L",
+                icon: "🦴"
+            },
+            {
+                name: "Ankle Support with Strap",
+                category: "ortho",
+                description: "Adjustable ankle support for sprains, strains, and post-injury rehabilitation. Provides compression and stability.",
+                sizes: "Universal",
+                icon: "🦶"
+            },
+            {
+                name: "Elbow Support Premium",
+                category: "ortho",
+                description: "Premium quality elbow support for tennis elbow, golfer's elbow, and general elbow pain relief.",
+                sizes: "S, M, L, XL",
+                icon: "💪"
+            },
+            {
+                name: "Wrist Cockup Splint",
+                category: "ortho",
+                description: "Wrist support splint for carpal tunnel syndrome, wrist fractures, and post-surgical immobilization.",
+                sizes: "RT/LT, Universal",
+                icon: "✋"
+            },
+
+            // Surgical Instruments
+            {
+                name: "Surgical Scissors",
+                category: "surgical",
+                description: "High-quality stainless steel surgical scissors for precise cutting during medical procedures.",
+                sizes: "6 inches",
+                icon: "✂️"
+            },
+            {
+                name: "Mosquito Forceps",
+                category: "surgical",
+                description: "Precision forceps for grasping small objects and controlling bleeding during surgical procedures.",
+                sizes: "6 inches, Curved/Straight",
+                icon: "🔧"
+            },
+            {
+                name: "Needle Holder",
+                category: "surgical",
+                description: "Essential surgical instrument for holding and manipulating suture needles during surgical procedures.",
+                sizes: "6 inches",
+                icon: "🪡"
+            },
+            {
+                name: "Kidney Tray",
+                category: "surgical",
+                description: "Stainless steel kidney-shaped tray for holding surgical instruments and medical supplies.",
+                sizes: "Various sizes available",
+                icon: "🥄"
+            },
+            {
+                name: "Surgical Blade Handle",
+                category: "surgical",
+                description: "Reusable handle for disposable surgical blades, essential for surgical incisions.",
+                sizes: "3, 4 inches",
+                icon: "🔪"
+            },
+
+            // Hospital Equipment
+            {
+                name: "Hospital Bed Single Function",
+                category: "hospital",
+                description: "Adjustable hospital bed with back rest function for patient comfort and care.",
+                sizes: "Standard",
+                icon: "🛏️"
+            },
+            {
+                name: "Wheelchair Standard",
+                category: "hospital",
+                description: "Durable wheelchair for patient mobility and transportation within healthcare facilities.",
+                sizes: "Standard",
+                icon: "♿"
+            },
+            {
+                name: "Commode Chair",
+                category: "hospital",
+                description: "Bedside commode chair for patients with limited mobility, providing convenience and dignity.",
+                sizes: "Adjustable",
+                icon: "🪑"
+            },
+            {
+                name: "IV Stand",
+                category: "hospital",
+                description: "Mobile IV drip stand with adjustable height for intravenous fluid administration.",
+                sizes: "Adjustable height",
+                icon: "🏥"
+            },
+            {
+                name: "Examination Table",
+                category: "hospital",
+                description: "Adjustable examination table for patient examination and minor procedures.",
+                sizes: "Standard",
+                icon: "🛏️"
+            },
+
+            // Medical Devices
+            {
+                name: "Blood Pressure Monitor Digital",
+                category: "medical",
+                description: "Automatic digital blood pressure monitor for accurate BP measurement in clinical settings.",
+                sizes: "Adult cuff",
+                icon: "📊"
+            },
+            {
+                name: "Pulse Oximeter",
+                category: "medical",
+                description: "Finger pulse oximeter for measuring oxygen saturation and pulse rate non-invasively.",
+                sizes: "Adult/Pediatric",
+                icon: "📱"
+            },
+            {
+                name: "Nebulizer Compressor",
+                category: "medical",
+                description: "Electric nebulizer for respiratory medication delivery in asthma and COPD patients.",
+                sizes: "Portable/Desktop",
+                icon: "💨"
+            },
+            {
+                name: "Thermometer Digital",
+                category: "medical",
+                description: "Digital thermometer for accurate body temperature measurement.",
+                sizes: "Standard",
+                icon: "🌡️"
+            },
+            {
+                name: "Stethoscope",
+                category: "medical",
+                description: "Professional stethoscope for auscultation of heart, lung, and bowel sounds.",
+                sizes: "Standard/Premium",
+                icon: "🩺"
+            },
+
+            // Additional Products
+            {
+                name: "Surgical Gloves",
+                category: "surgical",
+                description: "Sterile disposable surgical gloves for infection control during medical procedures.",
+                sizes: "6, 6.5, 7, 7.5, 8",
+                icon: "🧤"
+            },
+            {
+                name: "Face Mask N95",
+                category: "surgical",
+                description: "High-filtration N95 respirator masks for protection against airborne particles.",
+                sizes: "Universal",
+                icon: "😷"
+            },
+            {
+                name: "Hospital Bed Sheet",
+                category: "hospital",
+                description: "High-quality hospital bed sheets with pillow covers for patient comfort and hygiene.",
+                sizes: "Standard with pillow cover",
+                icon: "🛏️"
+            }
+        ];
+
+        let currentProducts = products;
+
+        function renderProducts(productsToRender) {
+            const productGrid = document.getElementById('product-grid');
+            productGrid.innerHTML = '';
+
+            productsToRender.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card fade-in';
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        ${product.icon}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-description">${product.description}</div>
+                        <div class="product-sizes"><strong>Available Sizes:</strong> ${product.sizes}</div>
+                    </div>
+                `;
+                productGrid.appendChild(productCard);
+            });
+        }
+
+        function filterProducts(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            event.target.classList.add('active');
+
+            if (category === 'all') {
+                currentProducts = products;
+            } else {
+                currentProducts = products.filter(product => product.category === category);
+            }
+            
+            renderProducts(currentProducts);
+        }
+
+        function searchProducts() {
+            const searchTerm = event.target.value.toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) ||
+                product.description.toLowerCase().includes(searchTerm)
+            );
+            renderProducts(filteredProducts);
+        }
+
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            if (sectionId === 'home') {
+                document.querySelector('.hero').style.display = 'block';
+                document.querySelector('.categories').style.display = 'grid';
+                document.querySelector('#products').style.display = 'block';
+            } else {
+                document.querySelector('#products').style.display = 'block';
+                filterProducts(sectionId);
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts(products);
+            
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all cards for animation
+            document.querySelectorAll('.category-card, .product-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
